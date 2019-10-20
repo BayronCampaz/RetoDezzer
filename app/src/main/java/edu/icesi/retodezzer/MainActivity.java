@@ -3,6 +3,7 @@ package edu.icesi.retodezzer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         searchEt = findViewById(R.id.search_et);
         searchBtn = findViewById(R.id.search_btn);
         playlists = findViewById(R.id.playlist_list);
+        adapter = new PlaylistAdapter();
+        playlists.setAdapter(adapter);
 
     }
 }

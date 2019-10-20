@@ -11,6 +11,10 @@ import edu.icesi.retodezzer.model.entity.Song;
 public class SongAdapter extends BaseAdapter {
     private ArrayList<Song> songs;
 
+    public SongAdapter(){
+        songs = new ArrayList<>();
+    }
+
     @Override
     public int getCount() {
         return songs.size();
@@ -28,6 +32,8 @@ public class SongAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
+
         return null;
     }
 }
