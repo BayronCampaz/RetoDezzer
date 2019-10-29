@@ -54,7 +54,7 @@ public class PlaylistAdapter extends BaseAdapter {
 
         namePlaylist.setText(playlists.get(position).getName());
         usernamePlaylist.setText(playlists.get(position).getUser());
-        sizePlaylist.setText(""+playlists.get(position).getSongs().size());
+        sizePlaylist.setText("6");
 
 
         //AQUI FALTA

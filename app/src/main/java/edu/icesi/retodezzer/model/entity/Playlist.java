@@ -1,8 +1,9 @@
 package edu.icesi.retodezzer.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Playlist {
+public class Playlist implements Serializable {
 
     private String image;
     private String name;

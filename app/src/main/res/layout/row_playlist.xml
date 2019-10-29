@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/playlist_img"
         android:background="@color/colorPrimary"
         android:layout_margin="10dp"/>
@@ -20,24 +20,27 @@
             android:layout_height="wrap_content"
             android:id="@+id/name_playlist_tv"
             android:text="Nombre playlist"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="17dp"
+            android:textColor="@color/texColorView"
+            android:layout_marginTop="5dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/username_playlist_tv"
             android:text="Nombre del usuario creador"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="17dp"
+            android:textColor="@color/texColorView"
+            android:layout_marginTop="5dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/size_playlist_tv"
             android:text="Numero de items"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="17dp"
+            android:textColor="@color/texColorView"
+            android:layout_marginTop="5dp"/>
 
 
     </LinearLayout>

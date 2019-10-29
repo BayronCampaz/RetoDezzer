@@ -30,6 +30,10 @@ public class PlaylistActivity extends AppCompatActivity {
         descriptionTv = findViewById(R.id.playlist_description_tv);
         numberSongsTv  = findViewById(R.id.playlist_number_songs_tv);
         numberFansTv= findViewById(R.id.playlist_number_fans_tv);
+
         songsList = findViewById(R.id.song_list);
+        adapter = new SongAdapter();
+        songsList.setAdapter(adapter);
     }
+
 }
