@@ -1,14 +1,15 @@
 package edu.icesi.retodezzer.model.dto;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data {
+public class Data implements Serializable {
 
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<SearchPlaylist> data = null;
     @SerializedName("total")
     @Expose
     private Integer total;
@@ -16,15 +17,15 @@ public class Data {
     @Expose
     private String next;
 
-    public List<Datum> getData() {
+    public List<SearchPlaylist> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<SearchPlaylist> data) {
         this.data = data;
     }
 
-    public Data withData(List<Datum> data) {
+    public Data withData(List<SearchPlaylist> data) {
         this.data = data;
         return this;
     }

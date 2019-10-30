@@ -13,11 +13,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import edu.icesi.retodezzer.R;
-import edu.icesi.retodezzer.model.entity.Playlist;
+import edu.icesi.retodezzer.model.dto.SearchPlaylist;
 
 public class PlaylistAdapter extends BaseAdapter {
 
-    private ArrayList<Playlist> playlists;
+    private ArrayList<SearchPlaylist> playlists;
 
     public PlaylistAdapter(ArrayList playlists){
         this.playlists = playlists;
@@ -50,11 +50,11 @@ public class PlaylistAdapter extends BaseAdapter {
         TextView usernamePlaylist = view.findViewById(R.id.username_playlist_tv);
         TextView sizePlaylist = view.findViewById(R.id.size_playlist_tv);
 
-        Picasso.get().load(playlists.get(position).getImage()).into(imagePlaylist);
+        Picasso.get().load(playlists.get(position).getPictureMedium()).into(imagePlaylist);
 
-        namePlaylist.setText(playlists.get(position).getName());
-        usernamePlaylist.setText(playlists.get(position).getUser());
-        sizePlaylist.setText("6");
+        namePlaylist.setText("Nombre: " + playlists.get(position).getTitle());
+        usernamePlaylist.setText("Usuario: " + playlists.get(position).getUser().getName());
+        sizePlaylist.setText("Numero de canciones: " + playlists.get(position).getNbTracks());
 
 
         //AQUI FALTA
@@ -62,11 +62,11 @@ public class PlaylistAdapter extends BaseAdapter {
         return view;
     }
 
-    public ArrayList<Playlist> getPlaylists() {
+    public ArrayList<SearchPlaylist> getPlaylists() {
         return playlists;
     }
 
-    public void setPlaylists(ArrayList<Playlist> playlists) {
+    public void setPlaylists(ArrayList<SearchPlaylist> playlists) {
         this.playlists = playlists;
     }
 }

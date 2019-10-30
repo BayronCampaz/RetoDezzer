@@ -1,6 +1,7 @@
 package edu.icesi.retodezzer.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,25 +12,27 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.icesi.retodezzer.R;
-import edu.icesi.retodezzer.model.entity.Song;
+import edu.icesi.retodezzer.model.dto.Track;
 
-public class SongAdapter extends BaseAdapter {
-    private ArrayList<Song> songs;
 
-    public SongAdapter(){
-        songs = new ArrayList<>();
+public class TrackAdapter extends BaseAdapter {
+    private List<Track> tracks;
+
+    public TrackAdapter(List<Track> tracks){
+        this.tracks = tracks;
     }
 
     @Override
     public int getCount() {
-        return songs.size();
+        return tracks.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return songs.get(i);
+        return tracks.get(i);
     }
 
     @Override
@@ -49,11 +52,14 @@ public class SongAdapter extends BaseAdapter {
         TextView artistSong = view.findViewById(R.id.artist_song_tv);
         TextView releaseSong = view.findViewById(R.id.release_song_tv);
 
-        Picasso.get().load(songs.get(position).getImage()).into(imageSong);
+        Picasso.get().load(tracks.get(position).getAlbum().getCoverMedium()).into(imageSong);
 
-        nameSong.setText(songs.get(position).getName());
-        artistSong.setText(songs.get(position).getArtist());
-        releaseSong.setText(""+songs.get(position).getRelease());
+        nameSong.setText(tracks.get(position).getTitle());
+        artistSong.setText(tracks.get(position).getArtist().getName());
+        int duration = Integer.parseInt(tracks.get(position).getDuration());
+        int minutesDuration = duration / 60;
+        int seconds = duration % 60;
+        releaseSong.setText("Duración: " + minutesDuration+":"+seconds);
 
         return view ;
     }

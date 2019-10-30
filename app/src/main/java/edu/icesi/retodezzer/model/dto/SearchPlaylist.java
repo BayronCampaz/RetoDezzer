@@ -2,7 +2,10 @@ package edu.icesi.retodezzer.model.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-public class Datum {
+
+import java.io.Serializable;
+
+public class SearchPlaylist implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -58,7 +61,7 @@ public class Datum {
         this.id = id;
     }
 
-    public Datum withId(Integer id) {
+    public SearchPlaylist withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -71,7 +74,7 @@ public class Datum {
         this.title = title;
     }
 
-    public Datum withTitle(String title) {
+    public SearchPlaylist withTitle(String title) {
         this.title = title;
         return this;
     }
@@ -84,7 +87,7 @@ public class Datum {
         this._public = _public;
     }
 
-    public Datum withPublic(Boolean _public) {
+    public SearchPlaylist withPublic(Boolean _public) {
         this._public = _public;
         return this;
     }
@@ -97,7 +100,7 @@ public class Datum {
         this.nbTracks = nbTracks;
     }
 
-    public Datum withNbTracks(Integer nbTracks) {
+    public SearchPlaylist withNbTracks(Integer nbTracks) {
         this.nbTracks = nbTracks;
         return this;
     }
@@ -110,7 +113,7 @@ public class Datum {
         this.link = link;
     }
 
-    public Datum withLink(String link) {
+    public SearchPlaylist withLink(String link) {
         this.link = link;
         return this;
     }
@@ -123,7 +126,7 @@ public class Datum {
         this.picture = picture;
     }
 
-    public Datum withPicture(String picture) {
+    public SearchPlaylist withPicture(String picture) {
         this.picture = picture;
         return this;
     }
@@ -136,7 +139,7 @@ public class Datum {
         this.pictureSmall = pictureSmall;
     }
 
-    public Datum withPictureSmall(String pictureSmall) {
+    public SearchPlaylist withPictureSmall(String pictureSmall) {
         this.pictureSmall = pictureSmall;
         return this;
     }
@@ -149,7 +152,7 @@ public class Datum {
         this.pictureMedium = pictureMedium;
     }
 
-    public Datum withPictureMedium(String pictureMedium) {
+    public SearchPlaylist withPictureMedium(String pictureMedium) {
         this.pictureMedium = pictureMedium;
         return this;
     }
@@ -162,7 +165,7 @@ public class Datum {
         this.pictureBig = pictureBig;
     }
 
-    public Datum withPictureBig(String pictureBig) {
+    public SearchPlaylist withPictureBig(String pictureBig) {
         this.pictureBig = pictureBig;
         return this;
     }
@@ -175,7 +178,7 @@ public class Datum {
         this.pictureXl = pictureXl;
     }
 
-    public Datum withPictureXl(String pictureXl) {
+    public SearchPlaylist withPictureXl(String pictureXl) {
         this.pictureXl = pictureXl;
         return this;
     }
@@ -188,7 +191,7 @@ public class Datum {
         this.checksum = checksum;
     }
 
-    public Datum withChecksum(String checksum) {
+    public SearchPlaylist withChecksum(String checksum) {
         this.checksum = checksum;
         return this;
     }
@@ -201,7 +204,7 @@ public class Datum {
         this.tracklist = tracklist;
     }
 
-    public Datum withTracklist(String tracklist) {
+    public SearchPlaylist withTracklist(String tracklist) {
         this.tracklist = tracklist;
         return this;
     }
@@ -214,7 +217,7 @@ public class Datum {
         this.creationDate = creationDate;
     }
 
-    public Datum withCreationDate(String creationDate) {
+    public SearchPlaylist withCreationDate(String creationDate) {
         this.creationDate = creationDate;
         return this;
     }
@@ -227,7 +230,7 @@ public class Datum {
         this.user = user;
     }
 
-    public Datum withUser(User user) {
+    public SearchPlaylist withUser(User user) {
         this.user = user;
         return this;
     }
@@ -240,7 +243,7 @@ public class Datum {
         this.type = type;
     }
 
-    public Datum withType(String type) {
+    public SearchPlaylist withType(String type) {
         this.type = type;
         return this;
     }

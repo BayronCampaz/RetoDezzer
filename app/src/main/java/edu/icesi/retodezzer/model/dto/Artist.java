@@ -5,14 +5,17 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class Artist implements Serializable {
 
     @SerializedName("id")
     @Expose
-    private long id;
+    private String id;
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("link")
+    @Expose
+    private String link;
     @SerializedName("tracklist")
     @Expose
     private String tracklist;
@@ -20,15 +23,15 @@ public class User implements Serializable {
     @Expose
     private String type;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public User withId(Integer id) {
+    public Artist withId(String id) {
         this.id = id;
         return this;
     }
@@ -41,8 +44,21 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public User withName(String name) {
+    public Artist withName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public Artist withLink(String link) {
+        this.link = link;
         return this;
     }
 
@@ -54,7 +70,7 @@ public class User implements Serializable {
         this.tracklist = tracklist;
     }
 
-    public User withTracklist(String tracklist) {
+    public Artist withTracklist(String tracklist) {
         this.tracklist = tracklist;
         return this;
     }
@@ -67,7 +83,7 @@ public class User implements Serializable {
         this.type = type;
     }
 
-    public User withType(String type) {
+    public Artist withType(String type) {
         this.type = type;
         return this;
     }

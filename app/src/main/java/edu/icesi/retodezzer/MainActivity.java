@@ -6,24 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 
 import edu.icesi.retodezzer.adapter.PlaylistAdapter;
 import edu.icesi.retodezzer.model.dto.Data;
-import edu.icesi.retodezzer.model.dto.Datum;
-import edu.icesi.retodezzer.model.entity.Playlist;
+import edu.icesi.retodezzer.model.dto.Playlist;
+import edu.icesi.retodezzer.model.dto.SearchPlaylist;
 import edu.icesi.retodezzer.util.HTTPSWebUtilDomi;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchEt;
     private ImageButton searchBtn;
     private ListView playlists;
-    private ArrayList<Playlist> playlistArray;
+    private ArrayList<SearchPlaylist> playlistArray;
     private PlaylistAdapter adapter;
 
 
@@ -52,10 +48,32 @@ public class MainActivity extends AppCompatActivity {
 
         playlists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, PlaylistActivity.class);
-                intent.putExtra("tracks", playlistArray.get(i));
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+                new Thread(
+                        ()-> {
+                            try {
+                            HTTPSWebUtilDomi util = new HTTPSWebUtilDomi();
+                            String json = null;
+
+                            json = util.GETrequest("https://api.deezer.com/playlist/"+playlistArray.get(position).getId());
+                            Log.e(">>>",json);
+
+                            Gson g = new Gson();
+                            Playlist playlist  = g.fromJson(json, Playlist.class);
+
+                                Intent intent = new Intent(MainActivity.this, PlaylistActivity.class);
+                                intent.putExtra("playlist", playlist);
+                                startActivity(intent);
+
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                }).start();
+
             }
         });
 
@@ -77,16 +95,11 @@ public class MainActivity extends AppCompatActivity {
                         Gson g = new Gson();
                         Data data  = g.fromJson(json, Data.class);
 
-                        playlistArray = new ArrayList<Playlist>();
+                        playlistArray = new ArrayList<SearchPlaylist>();
 
                         for(int i=0; i<data.getData().size(); i++){
-                            Datum datum = data.getData().get(i);
-                            Playlist playlist = new Playlist();
-                            playlist.setName(datum.getTitle());
-                            playlist.setDescription("Fecha de creación " + datum.getCreationDate());
-                            playlist.setImage(datum.getPictureSmall());
-                            playlist.setUser(datum.getUser().getName());
-                            playlistArray.add(playlist);
+                            SearchPlaylist searchPlaylist = data.getData().get(i);
+                            playlistArray.add(searchPlaylist);
                         }
 
                         adapter.setPlaylists(playlistArray);

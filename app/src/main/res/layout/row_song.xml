@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/song_img"
         android:background="@color/colorPrimary"
         android:layout_margin="10dp"/>
@@ -20,24 +20,27 @@
             android:layout_height="wrap_content"
             android:id="@+id/name_song_tv"
             android:text="Nombre de la cancion"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="17dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/texColorView"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/artist_song_tv"
             android:text="Artista de la cancion"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="17dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/texColorView"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/release_song_tv"
             android:text="Año de lanzamiento"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="17dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/texColorView"/>
 
 
     </LinearLayout>
