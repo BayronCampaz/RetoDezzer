@@ -59,7 +59,11 @@ public class TrackAdapter extends BaseAdapter {
         int duration = Integer.parseInt(tracks.get(position).getDuration());
         int minutesDuration = duration / 60;
         int seconds = duration % 60;
-        releaseSong.setText("Duración: " + minutesDuration+":"+seconds);
+        String secondString =""+seconds;
+        if(seconds < 10){
+            secondString = "0"+seconds;
+        }
+        releaseSong.setText("Duración: " + minutesDuration+":" + secondString);
 
         return view ;
     }

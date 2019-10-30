@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("playlist", playlist);
                                 startActivity(intent);
 
-
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

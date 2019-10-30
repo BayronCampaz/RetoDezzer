@@ -16,10 +16,10 @@
 
             <EditText
                 android:id="@+id/search_et"
-                android:layout_width="250dp"
+                android:layout_width="260dp"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
-                android:hint="Buscar una lista de reproduccion"></EditText>
+                android:hint="Buscar una playlist"></EditText>
 
             <ImageButton
                 android:id="@+id/search_btn"
@@ -37,8 +37,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/playlist_list">
         </ListView>
-
-
 
     </LinearLayout>
 </RelativeLayout>

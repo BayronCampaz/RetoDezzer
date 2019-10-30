@@ -52,9 +52,9 @@ public class PlaylistAdapter extends BaseAdapter {
 
         Picasso.get().load(playlists.get(position).getPictureMedium()).into(imagePlaylist);
 
-        namePlaylist.setText("Nombre: " + playlists.get(position).getTitle());
-        usernamePlaylist.setText("Usuario: " + playlists.get(position).getUser().getName());
-        sizePlaylist.setText("Numero de canciones: " + playlists.get(position).getNbTracks());
+        namePlaylist.setText(playlists.get(position).getTitle());
+        usernamePlaylist.setText(playlists.get(position).getUser().getName());
+        sizePlaylist.setText(playlists.get(position).getNbTracks() + " canciones" );
 
 
         //AQUI FALTA
