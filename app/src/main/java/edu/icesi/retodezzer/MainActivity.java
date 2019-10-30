@@ -10,10 +10,12 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import edu.icesi.retodezzer.adapter.PlaylistAdapter;
@@ -78,7 +80,13 @@ public class MainActivity extends AppCompatActivity {
 
         searchBtn.setOnClickListener(view -> {
             String search = searchEt.getText().toString();
-            searchPlaylist(search);
+            if(search.isEmpty()){
+                Toast toast = Toast.makeText(getApplicationContext(), "Escriba su busqueda", Toast.LENGTH_LONG);
+                toast.show();
+            }else{
+                searchPlaylist(search);
+            }
+
         });
 
     }
@@ -88,7 +96,10 @@ public class MainActivity extends AppCompatActivity {
                 () -> {
                     try {
                         HTTPSWebUtilDomi util = new HTTPSWebUtilDomi();
-                        String json = util.GETrequest("https://api.deezer.com/search/playlist?q="+search);
+
+                        String url = "https://api.deezer.com/search/playlist?q="+search;
+                        url = url.replace(" ", "%20");
+                        String json = util.GETrequest(url);
                         Log.e(">>>",json);
 
                         Gson g = new Gson();
@@ -96,17 +107,19 @@ public class MainActivity extends AppCompatActivity {
 
                         playlistArray = new ArrayList<SearchPlaylist>();
 
-                        for(int i=0; i<data.getData().size(); i++){
-                            SearchPlaylist searchPlaylist = data.getData().get(i);
-                            playlistArray.add(searchPlaylist);
+                        if(data.getData().isEmpty()){
+                            Toast toast = Toast.makeText(getApplicationContext(), "No hubo coincidencias", Toast.LENGTH_LONG);
+                            toast.show();
+                        }else{
+                            for(int i=0; i<data.getData().size(); i++){
+                                SearchPlaylist searchPlaylist = data.getData().get(i);
+                                playlistArray.add(searchPlaylist);
+                            }
+
+                            adapter.setPlaylists(playlistArray);
+                            runOnUiThread(()-> adapter.notifyDataSetChanged());
                         }
 
-                        adapter.setPlaylists(playlistArray);
-                        runOnUiThread(()-> adapter.notifyDataSetChanged() );
-
-                        //Tengo que ver donde hago el notifyChanged
-
-                       // runOnUiThread( ()-> searchEt.setText( data.getData().get(0).getTitle() ) );
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
