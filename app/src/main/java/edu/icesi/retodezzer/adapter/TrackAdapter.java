@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import edu.icesi.retodezzer.R;
@@ -56,14 +59,19 @@ public class TrackAdapter extends BaseAdapter {
 
         nameSong.setText(tracks.get(position).getTitle());
         artistSong.setText(tracks.get(position).getArtist().getName());
-        int duration = Integer.parseInt(tracks.get(position).getDuration());
+        Date date = new Date(Long.valueOf(tracks.get(position).getTimeAdd())*1000);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.get(Calendar.YEAR);
+        releaseSong.setText("Año de lanzamiento " + calendar.get(Calendar.YEAR));
+       /* int duration = Integer.parseInt(tracks.get(position).getDuration());
         int minutesDuration = duration / 60;
         int seconds = duration % 60;
         String secondString =""+seconds;
         if(seconds < 10){
             secondString = "0"+seconds;
-        }
-        releaseSong.setText("Duración: " + minutesDuration+":" + secondString);
+        }*/
+        //releaseSong.setText("Duración: " + minutesDuration+":" + secondString);
 
         return view ;
     }

@@ -54,7 +54,7 @@ public class SongActivity extends AppCompatActivity {
         durationSongTv.setText(minutesDuration + ":" + secondString);
 
         playBtn.setOnClickListener(view -> {
-            Uri uri = Uri.parse(song.getLink());
+            Uri uri = Uri.parse(song.getPreview());
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });
